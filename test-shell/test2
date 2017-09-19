@@ -1,0 +1,17 @@
+#!/bin/bash
+rm -f err1 err2
+rm -f csh-out shell-out
+echo -e "\033[1;4;93mTest: Error redirection\033[0m"
+echo "ls /none >& err1" > shell-in
+echo "ls /none >err2 2>&1" > csh-in
+/bin/sh < csh-in > csh-out
+../shell < shell-in > shell-out
+
+diff err1 err2
+if [ $? -ne 0 ]
+then
+  echo -e "\033[1;31mTest2 Failed\033[0m"
+  exit -1
+fi
+echo -e "\033[1;32mTest2 Passed\033[0m"
+exit 0

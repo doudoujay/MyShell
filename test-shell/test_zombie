@@ -1,0 +1,35 @@
+#!/bin/bash
+
+rm -f shell-out
+myname=`whoami`
+echo -e "\033[1;4;93mTest_zombie: Zombie Cleanup\033[0m"
+
+before=`/bin/ps -u $myname | grep -c defunc`
+echo "ls &" > shell-in
+echo "ls &" >> shell-in
+echo "ls &" >> shell-in
+echo "ls &" >> shell-in
+echo "ls &" >> shell-in
+echo "ls &" >> shell-in
+echo "ls &" >> shell-in
+echo "sleep 5" >> shell-in
+../shell < shell-in > shell-out &
+
+sleep 1
+
+grep test shell-out > out2 2>&1
+if [ $? -ne 0 ]
+then
+    echo -e "\033[1;31m$0 Failed\033[0m"
+    exit -1
+fi
+
+after=`/bin/ps -u $myname | grep -c defunc`
+
+if [ $before -ne $after ]
+then
+    echo -e "\033[1;31m$0 Failed. Zombie processes still around ($before, $after)\033[0m"
+    exit -1
+fi
+echo -e "\033[1;32m$0 Passed\033[0m"
+exit 0

@@ -1,0 +1,429 @@
+[master (root-commit) aaf5a83] Commit Shell
+ 8 files changed, 697 insertions(+)
+ create mode 100755 cat_grep.cc
+ create mode 100755 command.cc
+ create mode 100755 command.h
+ create mode 100755 ctrl-c.cc
+ create mode 100755 regular.cc
+ create mode 100755 shell.l
+ create mode 100755 shell.y
+ create mode 100644 y.tab.h
+[master a8b229c] Commit Shell
+ 1 file changed, 29 insertions(+), 10 deletions(-)
+[master 2959cff] Commit Shell
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+[master 32202c9] Commit Shell
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+[master c0e0ce3] Commit Shell
+ 1 file changed, 13 insertions(+), 7 deletions(-)
+[master (root-commit) a5bff4a] Commit Shell
+ 7 files changed, 629 insertions(+)
+ create mode 100755 cat_grep.cc
+ create mode 100755 command.cc
+ create mode 100755 command.h
+ create mode 100755 ctrl-c.cc
+ create mode 100755 regular.cc
+ create mode 100755 shell.l
+ create mode 100755 shell.y
+[master 5c5e678] Commit Shell
+ 1 file changed, 96 insertions(+)
+ create mode 100644 y.tab.h
+On branch master
+Untracked files:
+	.hello
+	.local.git.out
+	Makefile
+	cat_grep
+	command.o
+	ctrl-c
+	lex.yy.c
+	lex.yy.o
+	regular
+	shell
+	test-shell/
+	y.tab.c
+	y.tab.o
+
+nothing added to commit but untracked files present
+On branch master
+Untracked files:
+	.hello
+	.local.git.out
+	Makefile
+	cat_grep
+	command.o
+	ctrl-c
+	lex.yy.c
+	lex.yy.o
+	regular
+	shell
+	test-shell/
+	y.tab.c
+	y.tab.o
+
+nothing added to commit but untracked files present
+On branch master
+Untracked files:
+	.hello
+	.local.git.out
+	Makefile
+	cat_grep
+	command.o
+	ctrl-c
+	lex.yy.c
+	lex.yy.o
+	regular
+	shell
+	test-shell/
+	y.tab.c
+	y.tab.o
+
+nothing added to commit but untracked files present
+On branch master
+Untracked files:
+	.hello
+	.local.git.out
+	Makefile
+	cat_grep
+	command.o
+	ctrl-c
+	lex.yy.c
+	lex.yy.o
+	regular
+	shell
+	test-shell/
+	y.tab.c
+	y.tab.o
+
+nothing added to commit but untracked files present
+On branch master
+Untracked files:
+	.hello
+	.local.git.out
+	Makefile
+	cat_grep
+	command.o
+	ctrl-c
+	lex.yy.c
+	lex.yy.o
+	regular
+	shell
+	test-shell/
+	y.tab.c
+	y.tab.o
+
+nothing added to commit but untracked files present
+[master e587324] Commit Shell
+ 1 file changed, 96 deletions(-)
+ delete mode 100644 y.tab.h
+On branch master
+Untracked files:
+	.hello
+	.local.git.out
+	Makefile
+	test-shell/
+
+nothing added to commit but untracked files present
+[master bb9445c] Commit Shell
+ 1 file changed, 96 insertions(+)
+ create mode 100644 y.tab.h
+On branch master
+Untracked files:
+	.hello
+	.local.git.out
+	Makefile
+	cat_grep
+	command.o
+	ctrl-c
+	lex.yy.c
+	lex.yy.o
+	regular
+	shell
+	test-shell/
+	y.tab.c
+	y.tab.o
+
+nothing added to commit but untracked files present
+[master (root-commit) 002830c] Commit Shell
+ 6 files changed, 590 insertions(+)
+ create mode 100755 cat_grep.cc
+ create mode 100755 command.cc
+ create mode 100755 ctrl-c.cc
+ create mode 100755 regular.cc
+ create mode 100755 shell.l
+ create mode 100755 shell.y
+On branch master
+Untracked files:
+	.hello
+	.local.git.out
+	Makefile
+	cat_grep
+	command.h
+	command.o
+	ctrl-c
+	lex.yy.c
+	lex.yy.o
+	regular
+	shell
+	test-shell/
+	y.tab.c
+	y.tab.h
+	y.tab.o
+
+nothing added to commit but untracked files present
+On branch master
+Untracked files:
+	.hello
+	.local.git.out
+	Makefile
+	cat_grep
+	command.h
+	command.o
+	ctrl-c
+	lex.yy.c
+	lex.yy.o
+	regular
+	shell
+	test-shell/
+	y.tab.c
+	y.tab.h
+	y.tab.o
+
+nothing added to commit but untracked files present
+[master b83233a] Commit Shell
+ 1 file changed, 42 insertions(+)
+ create mode 100755 Makefile
+On branch master
+Untracked files:
+	.hello
+	.local.git.out
+	cat_grep
+	command.h
+	command.o
+	ctrl-c
+	lex.yy.c
+	lex.yy.o
+	regular
+	shell
+	test-shell/
+	y.tab.c
+	y.tab.h
+	y.tab.o
+
+nothing added to commit but untracked files present
+[master 3e51aae] Commit Shell
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+On branch master
+Untracked files:
+	.hello
+	.local.git.out
+	cat_grep
+	command.h
+	command.o
+	ctrl-c
+	lex.yy.c
+	lex.yy.o
+	regular
+	shell
+	test-shell/
+	y.tab.c
+	y.tab.h
+	y.tab.o
+
+nothing added to commit but untracked files present
+On branch master
+Untracked files:
+	.Makefile.swp
+	.hello
+	.local.git.out
+	command.h
+	test-shell/
+
+nothing added to commit but untracked files present
+[master bea55b8] ""
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master 3cb9c7d] ""
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master 0bd3766] Total:                   3   of 100
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master (root-commit) 4eddc26] Total:                   3   of 100
+ 7 files changed, 632 insertions(+)
+ create mode 100755 Makefile
+ create mode 100755 cat_grep.cc
+ create mode 100755 command.cc
+ create mode 100755 ctrl-c.cc
+ create mode 100755 regular.cc
+ create mode 100755 shell.l
+ create mode 100755 shell.y
+[master 76167bf] Commit
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+[master ae91eaf] Commit
+ 3 files changed, 137 insertions(+), 2 deletions(-)
+ create mode 100755 command.h
+ create mode 100644 y.tab.h
+On branch master
+Untracked files:
+	.hello
+	.local.git.out
+	cat_grep
+	command.o
+	ctrl-c
+	lex.yy.c
+	lex.yy.o
+	regular
+	shell
+	test-shell/
+	y.tab.c
+	y.tab.o
+
+nothing added to commit but untracked files present
+[master 3a12f8a] Commit
+ 1 file changed, 96 deletions(-)
+ delete mode 100644 y.tab.h
+[master dd015da] Commit
+ 3 files changed, 85 insertions(+), 1 deletion(-)
+ create mode 100644 test-shell/testall.out
+ create mode 100644 y.tab.h
+[master 084eb77] Commit
+ 1 file changed, 83 deletions(-)
+ delete mode 100644 y.tab.h
+[master 2b496cc] Commit
+ 53 files changed, 1258 insertions(+)
+ create mode 100755 test-shell/README
+ create mode 100755 test-shell/bgfile
+ create mode 100644 test-shell/csh-in
+ create mode 100644 test-shell/csh-out
+ create mode 100644 test-shell/err2
+ create mode 100755 test-shell/file-list
+ create mode 100755 test-shell/file1.cc
+ create mode 100755 test-shell/out
+ create mode 100644 test-shell/shell-in
+ create mode 100644 test-shell/shell-out
+ create mode 100755 test-shell/test1
+ create mode 100755 test-shell/test10
+ create mode 100755 test-shell/test102
+ create mode 100755 test-shell/test103
+ create mode 100755 test-shell/test104
+ create mode 100755 test-shell/test105
+ create mode 100755 test-shell/test106
+ create mode 100755 test-shell/test107
+ create mode 100755 test-shell/test108
+ create mode 100755 test-shell/test109
+ create mode 100755 test-shell/test11
+ create mode 100755 test-shell/test110
+ create mode 100755 test-shell/test111
+ create mode 100755 test-shell/test112
+ create mode 100755 test-shell/test112-2
+ create mode 100755 test-shell/test113
+ create mode 100755 test-shell/test114
+ create mode 100755 test-shell/test115
+ create mode 100755 test-shell/test116
+ create mode 100755 test-shell/test12
+ create mode 100755 test-shell/test13
+ create mode 100755 test-shell/test14
+ create mode 100755 test-shell/test15
+ create mode 100755 test-shell/test16
+ create mode 100755 test-shell/test17
+ create mode 100755 test-shell/test18
+ create mode 100755 test-shell/test2
+ create mode 100755 test-shell/test201
+ create mode 100755 test-shell/test202
+ create mode 100755 test-shell/test203
+ create mode 100755 test-shell/test204
+ create mode 100755 test-shell/test3
+ create mode 100755 test-shell/test3-2
+ create mode 100755 test-shell/test3-3
+ create mode 100755 test-shell/test4
+ create mode 100755 test-shell/test5
+ create mode 100755 test-shell/test6
+ create mode 100755 test-shell/test7
+ create mode 100755 test-shell/test8
+ create mode 100755 test-shell/test9
+ create mode 100755 test-shell/testall
+ create mode 100644 y.tab.h
+[master ce4a876] Commit
+ 2 files changed, 1 insertion(+), 84 deletions(-)
+ delete mode 100644 y.tab.h
+[master (root-commit) d252267] Commit
+ 64 files changed, 1861 insertions(+)
+ create mode 100755 Makefile
+ create mode 100755 cat_grep.cc
+ create mode 100755 command.cc
+ create mode 100755 command.h
+ create mode 100755 ctrl-c.cc
+ create mode 100755 regular.cc
+ create mode 100755 shell.l
+ create mode 100755 shell.y
+ create mode 100755 test-shell/README
+ create mode 100755 test-shell/bgfile
+ create mode 100644 test-shell/csh-in
+ create mode 100644 test-shell/csh-out
+ create mode 100644 test-shell/err2
+ create mode 100755 test-shell/file-list
+ create mode 100755 test-shell/file1.cc
+ create mode 100755 test-shell/files/aaa
+ create mode 100755 test-shell/files/aaaa
+ create mode 100755 test-shell/files/bbb
+ create mode 100755 test-shell/files/ccc
+ create mode 100755 test-shell/out
+ create mode 100644 test-shell/shell-in
+ create mode 100644 test-shell/shell-out
+ create mode 100755 test-shell/test1
+ create mode 100755 test-shell/test10
+ create mode 100755 test-shell/test102
+ create mode 100755 test-shell/test103
+ create mode 100755 test-shell/test104
+ create mode 100755 test-shell/test105
+ create mode 100755 test-shell/test106
+ create mode 100755 test-shell/test107
+ create mode 100755 test-shell/test108
+ create mode 100755 test-shell/test109
+ create mode 100755 test-shell/test11
+ create mode 100755 test-shell/test110
+ create mode 100755 test-shell/test111
+ create mode 100755 test-shell/test112
+ create mode 100755 test-shell/test112-2
+ create mode 100755 test-shell/test113
+ create mode 100755 test-shell/test114
+ create mode 100755 test-shell/test115
+ create mode 100755 test-shell/test116
+ create mode 100755 test-shell/test12
+ create mode 100755 test-shell/test13
+ create mode 100755 test-shell/test14
+ create mode 100755 test-shell/test15
+ create mode 100755 test-shell/test16
+ create mode 100755 test-shell/test17
+ create mode 100755 test-shell/test18
+ create mode 100755 test-shell/test2
+ create mode 100755 test-shell/test201
+ create mode 100755 test-shell/test202
+ create mode 100755 test-shell/test203
+ create mode 100755 test-shell/test204
+ create mode 100755 test-shell/test3
+ create mode 100755 test-shell/test3-2
+ create mode 100755 test-shell/test3-3
+ create mode 100755 test-shell/test4
+ create mode 100755 test-shell/test5
+ create mode 100755 test-shell/test6
+ create mode 100755 test-shell/test7
+ create mode 100755 test-shell/test8
+ create mode 100755 test-shell/test9
+ create mode 100755 test-shell/testall
+ create mode 100644 test-shell/testall.out
+[master (root-commit) 7f1c2d5] Commit
+ 9 files changed, 755 insertions(+)
+ create mode 100755 Makefile
+ create mode 100755 cat_grep.cc
+ create mode 100755 command.cc
+ create mode 100755 command.h
+ create mode 100755 ctrl-c.cc
+ create mode 100755 regular.cc
+ create mode 100755 shell.l
+ create mode 100755 shell.y
+ create mode 100644 y.tab.h
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+nothing to commit, working directory clean
+[master 4affb07] Commit
+ 2 files changed, 5 insertions(+), 1 deletion(-)

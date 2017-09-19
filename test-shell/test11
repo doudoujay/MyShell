@@ -1,0 +1,16 @@
+#!/bin/bash
+echo -e "\033[1;4;93mTest11: Error Output Redirection\033[0m"
+rm -f out1 out2
+echo "ls -z 2> out1" > shell-in
+echo "ls -z 2> out2" > bash-in
+/bin/bash < bash-in > bash-out
+../shell < shell-in > shell-out
+
+diff out1 out2 
+if [ $? -ne 0 ]
+then
+  echo -e "\033[1;31m$0 Failed\033[0m"
+  exit -1
+fi
+echo -e "\033[1;32m$0 Passed\033[0m"
+exit 0

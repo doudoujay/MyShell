@@ -1,0 +1,45 @@
+#!/bin/bash
+echo -e "\033[1;4;93mTest_robustness: Robustness \033[0m"
+echo " The grade of this test will depend on how"
+echo " difficult it is to grade your shell and"
+echo " succesfully running this script."
+
+rm -f core
+echo "ls " > shell-in
+echo "cat file1.cc | grep char | grep c > out " >> shell-in
+echo "cat file1.cc | grep char | grep c > out " >> shell-in
+echo "cat file1.cc | grep char | grep c > out " >> shell-in
+echo "cat file1.cc | grep char | grep c > out " >> shell-in
+echo "cat file1.cc | grep char | grep c > out " >> shell-in
+echo "cat file1.cc | grep char | grep c > out " >> shell-in
+echo "cat file1.cc | grep char | grep c > out " >> shell-in
+echo "cat file1.cc | grep char | grep c > out " >> shell-in
+echo "cat file1.cc | grep char | grep c > out " >> shell-in
+echo "echo /d*/* | grep k" >> shell-in
+echo "echo /d*/* | grep k" >> shell-in
+echo "echo /d*/* | grep k" >> shell-in
+echo "echo /d*/* | grep k" >> shell-in
+echo "echo /d*/* | grep k" >> shell-in
+echo "ls none | grep ppp" >> shell-in
+echo "ls none | grep ppp" >> shell-in
+echo "ls none | grep ppp" >> shell-in
+echo "ls " >> shell-in
+echo "ls " >> shell-in
+echo "ls " >> shell-in
+echo "ls " >> shell-in
+echo "ls " >> shell-in
+echo "ls " >> shell-in
+echo "ls " >> shell-in
+
+/bin/sh < shell-in > csh-out 2>&1
+../shell < shell-in > shell-out 2>&1
+
+diff csh-out shell-out > temp-out 2>&1
+if [ $? -ne 0 ]
+then
+    echo -e "\033[1;31m$0 Failed\033[0m"
+    exit -1
+fi
+rm -fr temp-out
+echo -e "\033[1;32m$0 Passed\033[0m"
+exit 0

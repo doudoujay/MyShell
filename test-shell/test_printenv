@@ -1,0 +1,27 @@
+#!/bin/bash
+
+rm -f csh-out shell-out
+echo -e "\033[1;4;93mTest_printenv: Environment - Print Env Variables\033[0m"
+echo "/usr/bin/printenv | grep PATH" > csh-in
+
+#Make sure that printenv is a built in command
+(
+PATH=/bin
+export PATH
+echo "printenv | grep PATH" > shell-in
+)
+
+../shell < shell-in > shell-out
+/bin/sh < csh-in > csh-out
+
+sort shell-out -o shell-out
+sort csh-out -o csh-out
+
+diff shell-out csh-out
+if [ $? -ne 0 ]
+then
+    echo -e "\033[1;31m$0 Failed\033[0m"
+    exit -1
+fi
+echo -e "\033[1;32m$0 Passed\033[0m"
+exit 0

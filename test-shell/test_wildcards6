@@ -1,0 +1,17 @@
+#!/bin/bash
+
+rm -f csh-out shell-out
+echo -e "\033[1;4;93mTest_wildcards6: echo /etc/r*/*s*\033[0m"
+echo "echo /etc/r*/*s*" > shell-in
+
+/bin/sh < shell-in > csh-out 2>&1
+../shell < shell-in > shell-out 2>&1
+
+diff shell-out csh-out
+if [ $? -ne 0 ]
+then
+    echo -e "\033[1;31m$0 Failed\033[0m"
+    exit -1
+fi
+echo -e "\033[1;32m$0 Passed\033[0m"
+exit 0

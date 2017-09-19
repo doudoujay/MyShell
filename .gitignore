@@ -1,0 +1,17 @@
+test-shell/bash-in
+test-shell/bash-out
+test-shell/bash-source
+test-shell/bgfile
+test-shell/csh-in
+test-shell/csh-out
+test-shell/out
+test-shell/out1
+test-shell/out2
+test-shell/shell-in
+test-shell/shell-out
+test-shell/shell-source
+test-shell/temp-out 
+test-shell/err1
+test-shell/err2
+test-shell/file-list
+test-shell/files/*

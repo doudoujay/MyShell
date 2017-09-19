@@ -1,0 +1,235 @@
+#!/bin/bash
+opt="ALL"
+
+# Check for parameter (and validity)
+if [ $# -gt 0 ]; then
+    if [[ $1 == "p1" || $1 == "p2" || $1 == "p3" ]]; then
+        opt=$1
+    fi
+fi
+
+################
+# Part 1 Tests #
+################
+
+if [[ $opt == "p1" || $opt == "ALL" ]]; then
+    grade1=0
+    grade1max=16
+    echo "---IO Redirection---- ($grade1max pts)"
+    ./test0 && grade1=`expr $grade1 "+" 3`
+    ./test1 && grade1=`expr $grade1 "+" 3`
+    ./test2 && grade1=`expr $grade1 "+" 3`
+    ./test3 && grade1=`expr $grade1 "+" 2`
+    ./test4 && grade1=`expr $grade1 "+" 2`
+    ./test5 && grade1=`expr $grade1 "+" 2`
+    ./test11 && grade1=`expr $grade1 "+" 1`
+
+    grade2=0
+    grade2max=15
+    echo "--- Pipes ----------- ($grade2max pts)"
+    ./test6 && grade2=`expr $grade2 "+" 4`
+    ./test7 && grade2=`expr $grade2 "+" 4`
+    ./test8 && grade2=`expr $grade2 "+" 4`
+    ./test9 && grade2=`expr $grade2 "+" 3`
+
+    grade3=0
+    
+    if [[ $opt == "p1" ]]; then
+        grade3max=3
+    else
+        grade3max=5
+    fi
+
+    echo "--- Background and Zombie Processes --- ($grade3max pts)"
+    ./test10 && grade3=`expr $grade3 "+" 3`
+fi
+
+################
+# Part 2 Tests #
+################
+
+if [[ $opt == "p2" ]]; then
+    grade3max=2
+    echo "--- Zombie Processes --- ($grade3max pts)"
+fi
+
+if [[ $opt == "p2" || $opt == "ALL" ]]; then
+    ./test_zombie && grade3=`expr $grade3 "+" 2`
+
+    grade4=0
+    grade4max=11
+    echo "--- Environment ----- ($grade4max pts)"
+    ./test_printenv && grade4=`expr $grade4 "+" 2`
+    ./test_setenv1 && grade4=`expr $grade4 "+" 1`
+    ./test_setenv2 && grade4=`expr $grade4 "+" 2`
+    ./test_unsetenv && grade4=`expr $grade4 "+" 2`
+    ./test_source && grade4=`expr $grade4 "+" 4`
+
+    grade5=0
+    grade5max=2
+    echo "--- Parsing Words and Special Chars --- ($grade5max pts)"
+    ./test_parsing1 && grade5=`expr $grade5 "+" 1`
+    ./test_parsing2 && grade5=`expr $grade5 "+" 1`
+
+    grade6=0
+    grade6max=5
+    echo "--- cd --- ($grade6max pts)"
+    ./test_cd1 && grade6=`expr $grade6 "+" 1`
+    ./test_cd2 && grade6=`expr $grade6 "+" 1`
+    ./test_cd3 && grade6=`expr $grade6 "+" 1`
+    ./test_cd4 && grade6=`expr $grade6 "+" 1`
+    ./test_cd5 && grade6=`expr $grade6 "+" 1`
+
+    grade7=0
+    grade7max=5
+    echo "--- Quotes and Escape Chars --- ($grade7max pts)"
+    ./test_quotes1 && grade7=`expr $grade7 "+" 1`
+    ./test_quotes2 && grade7=`expr $grade7 "+" 1`
+    ./test_quotes3 && grade7=`expr $grade7 "+" 1`
+    ./test_escape && grade7=`expr $grade7 "+" 2`
+
+    grade8=0
+    grade8max=10
+    echo "--- Subshell -- ($grade8max pts)"
+    ./test_subshell && grade8=`expr $grade8 "+" 10`
+fi
+
+################
+# Part 3 Tests #
+################
+
+if [[ $opt == "p3" || $opt == "ALL" ]]; then
+    grade9=0
+    grade9max=3
+    echo "--- Environment Variable Expansion --- ($grade9max pts)"
+    ./test_envExpand1 && grade9=`expr $grade9 "+" 2`
+    ./test_envExpand2 && grade9=`expr $grade9 "+" 1`
+
+    grade10=0
+    grade10max=14
+    echo "--- Wildcarding --- ($grade10max pts)"
+    ./test_wildcards1 && grade10=`expr $grade10 "+" 2`
+    ./test_wildcards2 && grade10=`expr $grade10 "+" 1`
+    ./test_wildcards3 && grade10=`expr $grade10 "+" 1`
+    ./test_wildcards4 && grade10=`expr $grade10 "+" 2`
+    ./test_wildcards5 && grade10=`expr $grade10 "+" 2`
+    ./test_wildcards6 && grade10=`expr $grade10 "+" 4`
+    ./test_wildcards7 && grade10=`expr $grade10 "+" 2`
+
+    grade11=0
+    grade11max=4
+    echo "--- Tilde Expansion -- ($grade11max pts)"
+    ./test_tilde && grade11=`expr $grade11 "+" 4`
+
+    grade12=0
+    grade12max=10
+    echo "--- Robustness -- ($grade12max pts)"
+    ./test_robustness && grade12=`expr $grade12 "+" 10`
+fi
+
+############################
+# Computing Correct Totals #
+############################
+
+if [[ $opt == "ALL" ]]; then
+    total=`expr $grade1 + $grade2 + $grade3 + $grade4 + $grade5 + \
+            $grade6 + $grade7 + $grade8 + $grade9 + $grade10 + $grade11 + $grade12`
+
+    totalmax=`expr $grade1max + $grade2max + $grade3max + $grade4max \
+            + $grade5max + $grade6max + $grade7max + $grade8max \
+            + $grade9max + $grade10max + $grade11max + $grade12max`
+else
+    if [[ $opt == "p1" ]]; then
+        total=`expr $grade1 + $grade2 + $grade3`
+
+        totalmax=`expr $grade1max + $grade2max + $grade3max`
+    else
+        if [[ $opt == "p2" ]]; then
+            total=`expr $grade3 + $grade4 + $grade5 + \
+                    $grade6 + $grade7 + $grade8`
+
+            totalmax=`expr $grade3max + $grade4max + $grade5max + \
+                $grade6max + $grade7max + $grade8max`
+        else # must be p3
+            total=`expr $grade9 + $grade10 + $grade11 + $grade12`
+            totalmax=`expr $grade9max + $grade10max + $grade11max + $grade12max`
+        fi
+    fi
+fi
+
+#########################
+# Reporting Final Score #
+#########################
+
+# Header #
+
+echo   "-------------------------------------------------"
+if [[ $opt == "ALL" ]]; then
+    echo    "User:  $USER, CS252: Lab 3 - All Tests"
+else
+    if [[ $opt == "p1" ]]; then
+        echo    "User:  $USER, CS252: Lab 3 - Part 1 Tests"
+    else
+        if [[ $opt == "p2" ]]; then
+            echo    "User:  $USER, CS252: Lab 3 - Part 2 Tests"
+        else # must be p3
+            echo    "User:  $USER, CS252: Lab 3 - Part 3 Tests"
+        fi
+    fi
+fi
+echo   "-------------------------------------------------"
+
+# Scores for Part 1 #
+
+if [[ $opt == "ALL" || $opt == "p1" ]]; then
+    printf "IO Redirection:          %-3d%s%-3d\n" $grade1 " of " $grade1max
+    printf "Pipes:                   %-3d%s%-3d\n" $grade2 " of " $grade2max
+    if [[ $opt == "ALL" ]]; then
+        printf "Background and Zombie:   %-3d%s%-3d\n" $grade3 " of " $grade3max
+    else
+        printf "Background:   %-3d%s%-3d\n" $grade3 " of " $grade3max
+    fi
+fi
+
+# Scores for Part 2 #
+
+if [[ $opt == "p2" || $opt == "ALL" ]]; then
+    if [[ $opt == "p2" ]]; then
+        printf "Zombie:   %-3d%s%-3d\n" $grade3 " of " $grade3max
+    fi
+    printf "Environment:             %-3d%s%-3d\n" $grade4 " of " $grade4max
+    printf "Words and Special Chars: %-3d%s%-3d\n" $grade5 " of " $grade5max
+    printf "cd:                      %-3d%s%-3d\n" $grade6 " of " $grade6max
+    printf "Quotes and Escape Chars: %-3d%s%-3d\n" $grade7 " of " $grade7max
+    printf "Subshell:                %-3d%s%-3d\n" $grade8 " of " $grade8max 
+fi
+
+# Scores for Part 3 #
+
+if [[ $opt == "p3" || $opt == "ALL" ]]; then
+    printf "Env Variable Expansion:  %-3d%s%-3d\n" $grade9 " of " $grade9max
+    printf "Wildcarding:             %-3d%s%-3d\n" $grade10 " of " $grade10max
+    printf "Tilde Expansion:         %-3d%s%-3d\n" $grade11 " of " $grade11max
+    printf "Robustness:              %-3d%s%-3d\n" $grade12 " of " $grade12max
+fi
+
+# Footer + Total Score #
+
+echo   "--------------------------------------------------"
+printf "Total:                   %-3d%s%-3d\n" $total " of " $totalmax
+
+# Write Total Score to File #
+
+if [[ $opt == "ALL" ]]; then
+    printf "Total:                   %-3d%s%-3d\n" $total " of " $totalmax > testall.out
+else
+    if [[ $opt == "p1" ]]; then
+        printf "Part 1 Total:                   %-3d%s%-3d\n" $total " of " $totalmax > testall.out
+    else
+        if [[ $opt == "p2" ]]; then
+            printf "Part 2 Total:                   %-3d%s%-3d\n" $total " of " $totalmax > testall.out
+        else
+            printf "Part 3 Total:                   %-3d%s%-3d\n" $total " of " $totalmax > testall.out
+        fi
+    fi
+fi

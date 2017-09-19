@@ -1,0 +1,15 @@
+#!/bin/bash
+rm -f out1 out2
+rm -f csh-out shell-out
+echo -e "\033[1;4;93mTest5: Multiple redirection\033[0m"
+echo "ls > out1 > out2" > shell-in
+../shell < shell-in > shell-out 2>&1
+
+grep "Ambiguous output redirect" shell-out
+if [ $? -ne 0 ]
+then
+  echo -e "\033[1;31m$0 Failed\033[0m"
+  exit -1
+fi
+echo -e "\033[1;32m$0 Passed\033[0m"
+exit 0

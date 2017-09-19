@@ -1,0 +1,19 @@
+#!/bin/bash
+
+rm -f csh-out shell-out
+echo -e "\033[1;4;93mTest_unsetenv: Enviroment: delete variable\033[0m"
+echo "setenv aaa pppp" > shell-in
+echo "printenv" >> shell-in
+echo "unsetenv aaa" >> shell-in
+echo "printenv" >> shell-in
+
+../shell < shell-in > shell-out
+
+res=`grep -c aaa= shell-out`
+if [ $res -ne 1 ]
+then
+    echo -e "\033[1;31m$0 Failed\033[0m"
+    exit -1
+fi
+echo -e "\033[1;32m$0 Passed\033[0m"
+exit 0

@@ -1,0 +1,17 @@
+#!/bin/bash
+echo -e "\033[1;4;93m$0: Test source\033[0m"
+echo "echo \"You Win!\"" > shell-in
+echo "echo \"You Win!\"" > bash-in
+echo "source shell-in" > shell-source
+echo "source csh-in" > bash-source
+/bin/bash < bash-source > bash-out
+../shell < shell-source > shell-out
+
+diff bash-out shell-out 
+if [ $? -ne 0 ]
+then
+  echo -e "\033[1;31m$0 Failed\033[0m"
+  exit -1
+fi
+echo -e "\033[1;32m$0 Passed\033[0m"
+exit 0

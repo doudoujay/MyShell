@@ -1,0 +1,17 @@
+#!/bin/bash
+
+rm -f csh-out shell-out
+echo -e "\033[1;4;93mTest7: 3 Pipes\033[0m"
+echo "Test7: 3 Pipes"
+echo "cat file1.cc | grep malloc | grep char" > shell-in
+/bin/sh < shell-in > csh-out
+../shell < shell-in > shell-out
+
+diff shell-out csh-out
+if [ $? -ne 0 ]
+then
+  echo -e "\033[1;31m$0 Failed\033[0m"
+  exit -1
+fi
+echo -e "\033[1;32m$0 Passed\033[0m"
+exit 0
