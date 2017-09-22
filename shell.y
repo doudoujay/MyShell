@@ -105,12 +105,12 @@ pipe_list:
 
 background_optional:
 	AMPERSAND
-	/*empty*/
+	| /*empty*/
 	;
 
 io_modifier_list:
 	io_modifier_list iomodifier_opt
-	| /*empt*/
+	| iomodifier_opt
 	;
 	
 %%
