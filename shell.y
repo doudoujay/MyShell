@@ -28,7 +28,7 @@
 }
 
 %token <string_val> WORD
-%token NOTOKEN GREAT NEWLINE
+%token NOTOKEN GREAT NEWLINE PIPE GREATGREAT AMPERSAND LESS GREATAMPERSAND GREATGREATAMPERSAND
 
 %{
 //#define yylex yylex
@@ -55,7 +55,7 @@ command: simple_command
        ;
 
 simple_command:	
-  command_and_args iomodifier_opt NEWLINE {
+  pipe_list iomodifier_list background_optional NEWLINE {
     printf("   Yacc: Execute command\n");
     Command::_currentCommand.execute();
   }
@@ -98,6 +98,21 @@ iomodifier_opt:
   | /* can be empty */ 
   ;
 
+pipe_list:
+	pipe_list PIPE command_and_args
+	| command_and_args
+	;
+
+background_optional:
+	AMPERSAND
+	| /*empt*/
+	;
+
+io_modifier_list:
+	io_modifier_list iomodifier_opt
+	| /*empt*/
+	;
+	
 %%
 
 void
