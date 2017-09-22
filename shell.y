@@ -90,6 +90,11 @@ command_word:
   }
   ;
 
+pipe_list:
+	pipe_list PIPE command_and_args
+	| command_and_args
+	;
+
 iomodifier_opt:
   GREAT WORD {
     printf("   Yacc: insert output \"%s\"\n", $2);
@@ -98,19 +103,14 @@ iomodifier_opt:
   | /* can be empty */ 
   ;
 
-pipe_list:
-	pipe_list PIPE command_and_args
-	| command_and_args
+io_modifier_list:
+	io_modifier_list iomodifier_opt
+	| iomodifier_opt
 	;
 
 background_optional:
 	AMPERSAND
 	| /*empty*/
-	;
-
-io_modifier_list:
-	io_modifier_list iomodifier_opt
-	| iomodifier_opt
 	;
 	
 %%
