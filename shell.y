@@ -105,7 +105,6 @@ pipe_list:
 
 background_optional:
 	AMPERSAND
-	| /*empt*/
 	;
 
 io_modifier_list:
