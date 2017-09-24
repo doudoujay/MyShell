@@ -59,7 +59,8 @@ simple_command:
     printf("   Yacc: Execute command\n");
     Command::_currentCommand.execute();
   }
-  | NEWLINE 
+  | NEWLINE {
+  }
   | error NEWLINE { yyerrok; }
   ;
 
@@ -78,7 +79,7 @@ argument_list:
 argument:
   WORD {
     printf("   Yacc: insert argument \"%s\"\n", $1);
-    Command::_currentSimpleCommand->insertArgument( $1 );\
+    Command::_currentSimpleCommand->insertArgument( $1 );
   }
   ;
 
@@ -112,7 +113,7 @@ background_optional:
 	AMPERSAND {
 		Command::_currentCommand._background = 1;
 	}
-	|
+	| /* can be empty */
 	;
 	
 %%
