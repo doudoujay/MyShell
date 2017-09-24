@@ -31,6 +31,7 @@ Command::Command()
 	_outFile = 0;
 	_inFile = 0;
 	_errFile = 0;
+	_append = 0;
 	_background = 0;
 }
 
