@@ -56,7 +56,6 @@ command: simple_command
 
 simple_command:	
    pipe_list iomodifier_list background_optional NEWLINE { 
-   //command_and_args iomodifier_opt NEWLINE {
     printf("   Yacc: Execute command\n");
     Command::_currentCommand.execute();
   }
@@ -106,7 +105,7 @@ iomodifier_opt:
 iomodifier_list:
 	iomodifier_list iomodifier_opt
 	| iomodifier_opt
-	| 
+	| /* can be empty */
 	;
 
 background_optional:
