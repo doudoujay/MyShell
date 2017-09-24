@@ -12,6 +12,7 @@ struct Command {
   char * _outFile;
   char * _inFile;
   char * _errFile;
+  int _append; //>> flag
   int _background;
 
   void prompt();

@@ -59,8 +59,7 @@ simple_command:
     printf("   Yacc: Execute command\n");
     Command::_currentCommand.execute();
   }
-  | NEWLINE {
-  }
+  | NEWLINE 
   | error NEWLINE { yyerrok; }
   ;
 
@@ -99,15 +98,27 @@ pipe_list:
 iomodifier_opt:
   	GREAT WORD {
     	printf("   Yacc: insert output \"%s\"\n", $2);
-    	Command::_currentCommand._outFile = $2;
+    	Command::_currentCommand._outFile = strdup($2);
   	}
 	| GREATGREAT WORD {
+    	printf("   Yacc: insert output \"%s\"\n", $2);
+    	Command::_currentCommand._outFile = strdup($2);
+    	Command::_currentCommand._append = 1;
 	}
 	| GREATAMPERSAND WORD {
+    	printf("   Yacc: insert output \"%s\"\n", $2);
+    	Command::_currentCommand._outFile = strdup($2);
+    	Command::_currentCommand._errFile = strdup($2);
 	}
 	| GREATGREATAMPERSAND WORD {
+    	printf("   Yacc: insert output \"%s\"\n", $2);
+    	Command::_currentCommand._outFile = strdup($2);
+    	Command::_currentCommand._errFile = strdup($2);
+    	Command::_currentCommand._append = 1;
 	}
 	| LESS WORD {
+    	printf("   Yacc: insert output \"%s\"\n", $2);
+    	Command::_currentCommand._inFile = strdup($2);
 	}
   	;
 
