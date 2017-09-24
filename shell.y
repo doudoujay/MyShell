@@ -102,7 +102,7 @@ iomodifier_opt:
     	Command::_currentCommand._outFile = strdup($2);
   	}
 	| GREATGREAT WORD {
-    	printf("   Yacc: insert output \"%s\"\n", $2);
+    	printf("   GREATGREAT WORD: insert output \"%s\"\n", $2);
     	Command::_currentCommand._outFile = strdup($2);
     	Command::_currentCommand._append = 1;
 	}
