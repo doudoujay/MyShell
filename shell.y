@@ -110,7 +110,7 @@ iomodifier_list:
 	;
 
 background_optional:
-	AMPERSAND{
+	AMPERSAND {
 		Command::_currentCommand._background = 1;
 	}
 	|
