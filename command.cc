@@ -114,8 +114,11 @@ void Command::execute() {
 	// Setup i/o redirection
 	// and call exec
 
+	int pid;
+
 	for(int i = 0; i < _numOfSimpleCommands; i++){
-		int pid = fork();
+		pid = fork();
+
 		if (pid == -1){
 			perror("fork\n");
 			exit(2);
