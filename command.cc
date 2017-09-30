@@ -122,7 +122,7 @@ void Command::execute() {
 		}
 
 		if(pid == 0){
-			execvp(_simpleCommand[i]->_arguments[0],_simpleCommand[i]->_arguments);
+			execvp(_simpleCommands[i]->_arguments[0],_simpleCommands[i]->_arguments);
 			perror("execvp");
 			_exit(1);
 		}
