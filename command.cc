@@ -114,6 +114,24 @@ void Command::execute() {
 	// Setup i/o redirection
 	// and call exec
 
+	for(int i = 0; i < _numOfSimpleCommands; i++){
+		int pid = fork();
+		if (pid == -1){
+			perror("fork\n");
+			exit(2);
+		}
+
+		if(pid == 0){
+			execvp(_simpleCommand[i]->_arguments[0],_simpleCommand[i]->_arguments);
+			perror("execvp");
+			_exit(1);
+		}
+	}
+
+	if(!_background){
+		waitpid(pid,NULL);
+	}
+
 	// Clear to prepare for next command
 	clear();
 	
