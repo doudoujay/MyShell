@@ -132,7 +132,7 @@ void Command::execute() {
 	}
 
 	if(!_background){
-		waitpid(pid,NULL);
+		waitpid(pid,NULL,0);
 	}
 
 	// Clear to prepare for next command
