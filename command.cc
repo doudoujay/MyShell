@@ -125,7 +125,7 @@ void Command::execute() {
 	int tmperr = dup(2);
 
 	int fdin;
-	int	fout;
+	int	fdout;
 	int ferr;
 
 	if(_inFile){
