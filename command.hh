@@ -14,6 +14,8 @@ struct Command {
   char * _errFile;
   int _append; //>> flag
   int _background;
+  int _inCounter;	//# of in
+  int _outCounter;	//# of out
 
   void prompt();
   void print();

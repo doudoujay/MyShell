@@ -33,6 +33,8 @@ Command::Command()
 	_errFile = 0;
 	_append = 0;
 	_background = 0;
+	_inCounter = 0;
+	_outCounter = 0;
 }
 
 void Command::insertSimpleCommand( SimpleCommand * simpleCommand ) {
@@ -73,6 +75,9 @@ void Command:: clear() {
 	_inFile = 0;
 	_errFile = 0;
 	_background = 0;
+	_inCounter = 0;
+	_outCounter = 0;
+	_append = 0;
 }
 
 void Command::print() {
@@ -113,10 +118,46 @@ void Command::execute() {
 	// For every simple command fork a new process
 	// Setup i/o redirection
 	// and call exec
+	int tmpin = dup(0);
+	int tmpout = dup(1);
+	int tmperr = dup(2);
+
+	int fdin;
+	int	fout;
+	int ferr;
+
+	if(_inFile){
+		fdin = open(_inFile, O_RDONLY);
+	}
+	else {
+		fdin = dup(tmpin);
+	}	
 
 	int pid;
 
 	for(int i = 0; i < _numOfSimpleCommands; i++){
+		dup2(fdin,0);
+		close(fdin);
+
+		if(i == _numOfSimpleCommands-1){
+			if(_outFile){
+				if(_append){
+					fdout = open(_outFile, O_WRONLY | O_APPEND | O_CREAT, 0600);
+				}
+				else {
+					fdout = open(_outFile, O_WRONLY | O_CREAT | O_TRUNC, 0600);
+				}
+			}
+			else {
+				fdout = dup(tmpout);
+			}
+		} else {
+
+		}
+
+		dup2(fdout,1);
+		close(fdout);
+
 		pid = fork();
 
 		if (pid == -1){
@@ -130,6 +171,12 @@ void Command::execute() {
 			_exit(1);
 		}
 	}
+
+	dup2(tmpin,0);
+	dup2(tmpout,1);
+	dup2(tmperr,2);
+	close(tmpin);
+	close(tmpout);
 
 	if(!_background){
 		waitpid(pid,NULL,0);
