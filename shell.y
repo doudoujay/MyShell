@@ -122,9 +122,13 @@ iomodifier_opt:
 		Command::_currentCommand._outCounter++;
 	}
 	| LESS WORD {
-    	printf("   Yacc: insert output \"%s\"\n", $2);
+    	printf("   Yacc: insert input \"%s\"\n", $2);
     	Command::_currentCommand._inFile = strdup($2);
 		Command::_currentCommand._inCounter++;
+	}
+	| TWOGREAT WORD {
+    	printf("   Yacc: insert output \"%s\"\n", $2);
+    	Command::_currentCommand._errFile = strdup($2);
 	}
   	;
 

@@ -126,7 +126,7 @@ void Command::execute() {
 
 	int fdin;
 	int	fdout;
-	int ferr;
+	int fderr;
 
 	if(_inFile){
 		fdin = open(_inFile, O_RDONLY);
@@ -134,6 +134,21 @@ void Command::execute() {
 	else {
 		fdin = dup(tmpin);
 	}	
+
+	if(_errFile){
+		if(_append){
+			fderr = open(_errFile, O_WRONLY | O_APPEND | O_CREAT, 0600);
+		}
+		else {
+			fderr = open(_errFile, O_WRONLY | O_CREAT | O_TRUNC, 0600);
+		}
+	}
+	else {
+		fderr = dup(tmperr);
+	}
+
+	dup2(fderr,2);
+	close(fderr);
 
 	int pid;
 
@@ -179,6 +194,7 @@ void Command::execute() {
 	dup2(tmperr,2);
 	close(tmpin);
 	close(tmpout);
+	close(tmperr);
 
 	if(!_background){
 		waitpid(pid,NULL,0);
