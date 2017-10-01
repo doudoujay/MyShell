@@ -57,7 +57,7 @@ command: simple_command
 
 simple_command:	
    pipe_list iomodifier_list background_optional NEWLINE { 
-    printf("   Yacc: Execute command\n");
+//printf("   Yacc: Execute command\n");
     Command::_currentCommand.execute();
   }
   | NEWLINE 
@@ -78,14 +78,14 @@ argument_list:
 
 argument:
   WORD {
-    printf("   Yacc: insert argument \"%s\"\n", $1);
+//printf("   Yacc: insert argument \"%s\"\n", $1);
     Command::_currentSimpleCommand->insertArgument( $1 );
   }
   ;
 
 command_word:
   WORD {
-    printf("   Yacc: insert command \"%s\"\n", $1);
+//printf("   Yacc: insert command \"%s\"\n", $1);
     Command::_currentSimpleCommand = new SimpleCommand();
     Command::_currentSimpleCommand->insertArgument( $1 );
   }
@@ -98,36 +98,36 @@ pipe_list:
 
 iomodifier_opt:
   	GREAT WORD {
-    	printf("   Yacc: insert output \"%s\"\n", $2);
+//printf("   Yacc: insert output \"%s\"\n", $2);
     	Command::_currentCommand._outFile = strdup($2);
 		Command::_currentCommand._outCounter++;
   	}
 	| GREATGREAT WORD {
-    	printf("   GREATGREAT WORD: insert output \"%s\"\n", $2);
+//printf("   GREATGREAT WORD: insert output \"%s\"\n", $2);
     	Command::_currentCommand._outFile = strdup($2);
     	Command::_currentCommand._append = 1;
 		Command::_currentCommand._outCounter++;
 	}
 	| GREATAMPERSAND WORD {
-    	printf("   Yacc: insert output \"%s\"\n", $2);
+..printf("   Yacc: insert output \"%s\"\n", $2);
     	Command::_currentCommand._outFile = strdup($2);
     	Command::_currentCommand._errFile = strdup($2);
 		Command::_currentCommand._outCounter++;
 	}
 	| GREATGREATAMPERSAND WORD {
-    	printf("   Yacc: insert output \"%s\"\n", $2);
+//printf("   Yacc: insert output \"%s\"\n", $2);
     	Command::_currentCommand._outFile = strdup($2);
     	Command::_currentCommand._errFile = strdup($2);
     	Command::_currentCommand._append = 1;
 		Command::_currentCommand._outCounter++;
 	}
 	| LESS WORD {
-    	printf("   Yacc: insert input \"%s\"\n", $2);
+//printf("   Yacc: insert input \"%s\"\n", $2);
     	Command::_currentCommand._inFile = strdup($2);
 		Command::_currentCommand._inCounter++;
 	}
 	| TWOGREAT WORD {
-    	printf("   Yacc: insert output \"%s\"\n", $2);
+//printf("   Yacc: insert output \"%s\"\n", $2);
     	Command::_currentCommand._errFile = strdup($2);
 	}
   	;

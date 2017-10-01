@@ -114,7 +114,7 @@ void Command::execute() {
 	}
 
 	// Print contents of Command data structure
-	print();
+//print();
 
 	// Add execution here
 	// For every simple command fork a new process
