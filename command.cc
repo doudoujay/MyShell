@@ -169,7 +169,10 @@ void Command::execute() {
 				fdout = dup(tmpout);
 			}
 		} else {
-
+			int fdpipe[2];
+			pipe(fdpipe);
+			fdout = fdpipe[1];
+			fdin = fdpipe[0];
 		}
 
 		dup2(fdout,1);
