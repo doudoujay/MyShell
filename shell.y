@@ -109,7 +109,7 @@ iomodifier_opt:
 		Command::_currentCommand._outCounter++;
 	}
 	| GREATAMPERSAND WORD {
-..printf("   Yacc: insert output \"%s\"\n", $2);
+//printf("   Yacc: insert output \"%s\"\n", $2);
     	Command::_currentCommand._outFile = strdup($2);
     	Command::_currentCommand._errFile = strdup($2);
 		Command::_currentCommand._outCounter++;
