@@ -87,7 +87,7 @@ void myunputc(int c) {
 				temp = temp + 2;
 				escape[i++] = '\\';
 			} else {
-				escape[i++] = *temp;
+				escape[i++] = *(++temp);
 			} 
 		} else {
 			escape[i++] = *temp;
