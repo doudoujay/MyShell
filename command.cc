@@ -21,6 +21,7 @@
 
 #include "command.hh"
 
+extern char **environ; //Holds enviroment variables
 
 Command::Command()
 {
@@ -107,15 +108,6 @@ void Command::print() {
 }
 
 int Command::BuiltIn(int i) {
-	if(strcmp(_simpleCommands[i]->_arguments[0], "printenv") == 0){
-		char ** env = environ;
-
-		while(*env){
-			printf("%s\n", *env);
-			env++;
-		}
-	}
-
 	if(strcmp(_simpleCommands[i]->_arguments[0], "setenv") == 0){
 		int error = setenv(_simpleCommands[i]->_arguments[1], _simpleCommands[i]->_arguments[2], 1);
 		if(error) {
@@ -134,10 +126,6 @@ int Command::BuiltIn(int i) {
 		clear();
 		prompt();
 		return 1;
-	}
-
-	if(strcmp(_simpleCommands[i]->_arguments[0], "source") == 0){
-		int error = source(_simpleCommands[i]->_arguments[1]);
 	}
 
 	if(strcmp(_simpleCommands[i]->_arguments[0], "cd") == 0){
@@ -256,6 +244,15 @@ void Command::execute() {
 		}
 
 		if(pid == 0){
+			if(strcmp(_simpleCommands[i]->_arguments[0], "printenv") == 0){
+				char ** env = environ;
+
+				while(*env){
+					printf("%s\n", *env);
+					env++;
+				}
+			}
+
 			execvp(_simpleCommands[i]->_arguments[0],_simpleCommands[i]->_arguments);
 			perror("execvp");
 			_exit(1);

@@ -68,10 +68,12 @@ void myunputc(int c) {
   return WORD;
 }
 
-["][^ \n\"]*["] { 
+["][^\n\"]*["] { 
 	/* quotes */
-	yytext[strlen(yytext)+1] = '\0';
-	yylval.string_val = strdup(yytext);
+	yylval.string_val = strdup(yytext+1);
+
+    if (yylval.string_val[yyleng-2] == '"'
+		yylval.string_val[yyleng-2] = 0;
 	return WORD;
 } 
 
