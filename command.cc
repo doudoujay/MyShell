@@ -106,6 +106,56 @@ void Command::print() {
 	
 }
 
+int Command::BuiltIn(int i) {
+	if(strcmp(_simpleCommands[i]->_arguments[0], "printenv") == 0){
+		char ** env = environ;
+
+		while(*env){
+			printf("%s\n", *env);
+			env++;
+		}
+	}
+
+	if(strcmp(_simpleCommands[i]->_arguments[0], "setenv") == 0){
+		int error = setenv(_simpleCommands[i]->arguments[1], _simpleCommands[i]->_arguments[2], 1);
+		if(error) {
+			perror("setenv");
+		}
+		clear();
+		prompt();
+		retrun 1;
+	}
+
+	if(strcmp(_simpleCommands[i]->_arguments[0], "unsetenv") == 0){
+		int error = unsetenv(_simpleCommands[i]->arguments[1]);
+		if(error) {
+			perror("unsetenv");
+		}
+		clear();
+		prompt();
+		retrun 1;
+	}
+
+	if(strcmp(_simpleCommands[i]->_arguments[0], "cd") == 0){
+		int error;
+		if(_simpleCommands[i]->_numOfArguments == 1){
+			error = chdir(getenv("HOME"));
+		} else {
+			error = chdir(_simpleCommands[i]->_arguments[1]);
+		}
+
+		if(error < 0){
+			perror("cd");
+		}
+
+		clear();
+		prompt();
+		return 1;
+	}
+	
+	return 0;
+}
+
 void Command::execute() {
 	// Don't do anything if there are no simple commands
 	if ( _numOfSimpleCommands == 0 ) {
@@ -166,6 +216,9 @@ void Command::execute() {
 	int pid;
 
 	for(int i = 0; i < _numOfSimpleCommands; i++){
+		//built in
+		if(BuiltIn(i))	return;
+
 		dup2(fdin,0);
 		close(fdin);
 
