@@ -151,7 +151,7 @@ int Command::BuiltIn(int i) {
 		clear();
 		prompt();
 		return 1;
-	}`
+	}
 	
 	return 0;
 }
