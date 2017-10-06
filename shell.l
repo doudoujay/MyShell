@@ -99,5 +99,6 @@ void myunputc(int c) {
 
 	escape[i++] = '\0';
 	yylval.string_val = strdup(escape);
+printf("yyval=%s\n",yylval.string_val);
 	return WORD;
 }
