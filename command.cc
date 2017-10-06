@@ -123,7 +123,7 @@ int Command::BuiltIn(int i) {
 		}
 		clear();
 		prompt();
-		retrun 1;
+		return 1;
 	}
 
 	if(strcmp(_simpleCommands[i]->_arguments[0], "unsetenv") == 0){
@@ -133,7 +133,7 @@ int Command::BuiltIn(int i) {
 		}
 		clear();
 		prompt();
-		retrun 1;
+		return 1;
 	}
 
 	if(strcmp(_simpleCommands[i]->_arguments[0], "cd") == 0){
