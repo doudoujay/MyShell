@@ -4,14 +4,14 @@
 
 int yyparse(void);
 
-extern "C" void ctrl-c (int sig) {
+extern "C" void ctrlC (int sig) {
 	printf("\n");
 	Command::_currentCommand.prompt();
 }
 
 int main() {
 	struct sigaction sigA1;
-	sigA1.sa_handler = ctrl-c;
+	sigA1.sa_handler = ctrlC;
 	sigemptyset(&sigA1.sa_mask);
 	sigA1.sa_flags = SA_RESTART;
 	int error = sigaction(SIGINT, &sigA1, NULL);
