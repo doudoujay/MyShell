@@ -114,6 +114,11 @@ void Command::execute() {
 	}
 
 //
+	if(strcmp(_simpleCommands[0]->_arguments[0],"exit") == 0){
+		printf("Good bye!!\n");
+		exit(1);
+	}
+
 	if (_inCounter > 1 || _outCounter > 1) {
 		printf("Ambiguous output redirect.\n");
 		clear();
