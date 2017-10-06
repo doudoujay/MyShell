@@ -74,6 +74,7 @@ void myunputc(int c) {
 
     if (yylval.string_val[yyleng-2] == '"')
 		yylval.string_val[yyleng-2] = 0;
+printf("yyval=%s\n",yylval.string_val);
 	return WORD;
 } 
 
@@ -97,8 +98,7 @@ void myunputc(int c) {
 		temp++;
 	}
 
-	escape[i++] = '\0';
+	escape[i] = '\0';
 	yylval.string_val = strdup(escape);
-printf("yyval=%s\n",yylval.string_val);
 	return WORD;
 }
