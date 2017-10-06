@@ -136,6 +136,10 @@ int Command::BuiltIn(int i) {
 		return 1;
 	}
 
+	if(strcmp(_simpleCommands[i]->_arguments[0], "source") == 0){
+		int error = source(_simpleCommands[i]->_arguments[1]);
+	}
+
 	if(strcmp(_simpleCommands[i]->_arguments[0], "cd") == 0){
 		int error;
 		if(_simpleCommands[i]->_numOfArguments == 1){
