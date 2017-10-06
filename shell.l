@@ -74,12 +74,12 @@ void myunputc(int c) {
 
     if (yylval.string_val[yyleng-2] == '"')
 		yylval.string_val[yyleng-2] = 0;
-printf("yyval=%s\n",yylval.string_val);
 	return WORD;
 } 
 
 [^ \t\n|><&]*\\[^ \t\n]* {
 	/* escaping */
+printf("yyval=%s\n",yylval.string_val);
 	int i = 0;
 	char * escape = (char *)malloc(200);
 	char * temp = yytext;
