@@ -68,8 +68,8 @@ void myunputc(int c) {
   return WORD;
 }
 
-/* quotes */
 ["][^\n\"]*["] { 
+	/* quotes */
 	yytext[strlen(++yytext)] = '\0';
 	yylval.string_val = strdup(yytext);
 	return WORD;
