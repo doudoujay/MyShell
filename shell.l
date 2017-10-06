@@ -97,5 +97,5 @@ void myunputc(int c) {
 
 	escape[i++] = '\0';
 	yylval.string_val = strdup(escape);
-	return word;
+	return WORD;
 }
