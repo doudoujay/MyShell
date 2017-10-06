@@ -127,7 +127,7 @@ int Command::BuiltIn(int i) {
 	}
 
 	if(strcmp(_simpleCommands[i]->_arguments[0], "unsetenv") == 0){
-		int error = unsetenv(_simpleCommands[i]->arguments[1]);
+		int error = unsetenv(_simpleCommands[i]->_arguments[1]);
 		if(error) {
 			perror("unsetenv");
 		}
@@ -151,7 +151,7 @@ int Command::BuiltIn(int i) {
 		clear();
 		prompt();
 		return 1;
-	}
+	}`
 	
 	return 0;
 }
