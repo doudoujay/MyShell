@@ -22,6 +22,8 @@ struct Command {
   void execute();
   void clear();
 
+  int BuiltIn(int i);
+
   Command();
   void insertSimpleCommand( SimpleCommand * simpleCommand );
 
