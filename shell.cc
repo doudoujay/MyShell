@@ -6,7 +6,7 @@
 int yyparse(void);
 
 extern "C" void ctrlC (int sig) {
-	printf("ctrl c works\n");
+	printf("\nctrl c works\n");
 	Command::_currentCommand.prompt();
 }
 
