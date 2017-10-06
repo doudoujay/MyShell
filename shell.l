@@ -74,3 +74,28 @@ void myunputc(int c) {
 	yylval.string_val = strdup(yytext);
 	return WORD;
 } 
+
+[^ \t\n|><&]*\\[^ \t\n]* {
+	/* escaping */
+	int i = 0;
+	char * escape = (char *)malloc(200);
+	char * temp = yytext;
+
+	while(*temp){
+		if (*temp == '\\'){
+			if(*(temp+1) == '\\'){
+				temp = temp + 2;
+				escape[i++] = '\\';
+			} else {
+				escape[i++] = *temp;
+			} 
+		} else {
+			escape[i++] = *temp;
+		}
+		temp++;
+	}
+
+	escape[i++] = '\0';
+	yylval.string_val = strdup(escape);
+	return word;
+}
