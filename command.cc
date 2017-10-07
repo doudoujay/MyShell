@@ -10,6 +10,8 @@
 
 #include "command.hh"
 
+using namespace std; 
+
 extern char **environ; //Holds enviroment variables
 
 Command::Command()
