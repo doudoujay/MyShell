@@ -777,3 +777,22 @@ M	command.cc
 M	shell.l
 M	simpleCommand.hh
 Your branch is up-to-date with 'origin/master'.
+[master e5e7e3a] Commit
+ Committer: Haoran Wang <wang2226@data.cs.purdue.edu>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly:
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 4 files changed, 125 insertions(+), 311 deletions(-)
+ rewrite shell.l (60%)
+M	.local.git.out
+M	shell.l
+M	shell.y
+Your branch is up-to-date with 'origin/master'.

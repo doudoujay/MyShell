@@ -39,6 +39,7 @@
 void yyerror(const char * s);
 int yylex();
 
+void expandWildCardsIfNecessary(char * arg);
 %}
 
 %%
@@ -79,7 +80,8 @@ argument_list:
 argument:
   WORD {
 //printf("   Yacc: insert argument \"%s\"\n", $1);
-    Command::_currentSimpleCommand->insertArgument( $1 );
+    //Command::_currentSimpleCommand->insertArgument( $1 );
+	expandWildCardsIfNecessary($1);
   }
   ;
 
@@ -146,6 +148,27 @@ background_optional:
 	;
 	
 %%
+
+int maxEntries = 20;
+int nEntries = 0;
+char ** entries;
+
+void expandWildCardsIfNecessary(char * arg) {
+
+	maxEntries = 20;
+	nEntries = 0;
+	entries = (char **) malloc (maxEntries * sizeof(char *));
+
+	if (strchr(arg, '*') || strchr(arg, '?')) {
+		expandWildCards(NULL, arg);
+		qsort(entries, nEntries, sizeof(char *), cmpfunc);
+		for (int i = 0; i < nEntries; i++) Command::_currentSimpleCommand->insertArgument(entries[i]);
+	}
+	else {
+		Command::_currentSimpleCommand->insertArgument(arg);
+	}
+	return;
+}
 
 void
 yyerror(const char * s)
