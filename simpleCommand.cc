@@ -4,6 +4,9 @@
 
 using namespace std; 
 
+int numArgs = 10000;
+int curArg = 1;
+
 SimpleCommand::SimpleCommand() {
 	// Create available space for 5 arguments
 	_numOfAvailableArguments = 5;
