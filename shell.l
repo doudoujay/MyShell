@@ -62,12 +62,6 @@ void myunputc(int c) {
 	return GREATGREATAMPERSAND;
 }
 
-[^ \t\n][^ \t\n]*  {
-  /* Assume that file names have only alpha chars */
-  yylval.string_val = strdup(yytext);
-  return WORD;
-}
-
 ["][^\n\"]*["] { 
 	/* quotes */
 	yylval.string_val = strdup(yytext+1);
@@ -101,4 +95,10 @@ printf("yyval=%s\n",yylval.string_val);
 	escape[i] = '\0';
 	yylval.string_val = strdup(escape);
 	return WORD;
+}
+
+[^ \t\n][^ \t\n]*  {
+  /* Assume that file names have only alpha chars */
+  yylval.string_val = strdup(yytext);
+  return WORD;
 }
