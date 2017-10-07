@@ -3,6 +3,28 @@
 
 #include "simpleCommand.hh"
 
+//C++
+#include <string>
+#include <algorithm>
+#include <iterator>
+#include <vector>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include "y.tab.hh"
+
+//C
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <sys/stat.h>
+#include <signal.h>
+#include <fcntl.h>
+
 // Command Data Structure
 
 struct Command {
