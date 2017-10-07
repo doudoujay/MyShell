@@ -14,6 +14,37 @@
 #include "y.tab.hh"
 #include "command.hh"
 
+////////////  Start added code ///////////
+
+	char * read_line();
+
+	int mygetc(FILE * f) {
+		static char *p;
+		char ch;
+
+		if (!isatty(0)) {
+			 // stdin is not a tty. Call real getc
+			 return getc(f);
+		}
+
+		// stdin is a tty. Call our read_line.
+
+		if (p==NULL || *p == 0) {
+			 char * s = read_line();
+			  p = s;
+		}
+
+		ch = *p;
+		p++;
+
+		return ch;
+	}
+
+#undef getc
+#define getc(f) mygetc(f)
+
+	/////////// End added code ///////////
+
 static  void yyunput (int c,char *buf_ptr  );
 
 void myunputc(int c) {
