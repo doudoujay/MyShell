@@ -2,6 +2,8 @@
 
 #include "simpleCommand.hh"
 
+using namespace std; 
+
 SimpleCommand::SimpleCommand() {
 	// Create available space for 5 arguments
 	_numOfAvailableArguments = 5;
