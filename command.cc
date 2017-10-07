@@ -17,6 +17,10 @@ using namespace std;
 int numArgs = 10000;
 int curArg = 1;
 
+int _histCount = 0; //Used to count lines
+string arg = "";
+bool onError = false;
+
 Command::Command()
 {
 	// Create available space for one simple command
