@@ -1,6 +1,7 @@
 #include <cstdlib>
 
 #include "simpleCommand.hh"
+#include "command.hh"
 
 using namespace std; 
 
