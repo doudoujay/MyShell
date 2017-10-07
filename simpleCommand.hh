@@ -35,7 +35,6 @@ struct SimpleCommand {
 
   SimpleCommand();
   void insertArgument( char * argument );
-  void expandWildcardsIfNecessary(std::vector<std::string> pre, char * arg);
 };
 
 #endif
