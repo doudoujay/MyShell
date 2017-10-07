@@ -9,7 +9,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include "y.tab.h"
+#include "y.tab.hh"
 
 //C
 #include <dirent.h>
