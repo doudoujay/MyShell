@@ -10,7 +10,9 @@
 %{
 
 #include <cstring>
+#include <unistd.h>
 #include "y.tab.hh"
+#include "command.hh"
 
 static  void yyunput (int c,char *buf_ptr  );
 
