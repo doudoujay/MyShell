@@ -31,7 +31,7 @@ extern "C" char * read_line();
 
 		if (p==NULL || *p == 0) {
 			 char * s = read_line();
-			  p = s;
+			 p = s;
 		}
 
 		ch = *p;

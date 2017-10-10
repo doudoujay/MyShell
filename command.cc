@@ -244,9 +244,63 @@ void Command::execute() {
 				}
 			}
 
+			if(strcmp(_simpleCommands[i]->_arguments[0], "source") == 0){
+				FILE * fp = fopen(_simpleCommands[i]->_arguments[1], "r");
+                char cmdline [1024];
+
+				fgets(cmdline, 1023, fp);
+				fclose(fp);
+
+	int tmpin = dup(0);
+	int tmpout = dup(1);
+
+	int fdpipein[2];
+	int fdpipeout[2];
+
+	pipe(fdpipein);
+	pipe(fdpipeout);
+
+	write(fdpipein[1], cmdline, strlen(cmdline));
+	write(fdpipein[1], "\n", 1);
+
+	close(fdpipein[1]);
+
+	dup2(fdpipein[0], 0);
+	close(fdpipein[0]);
+	dup2(fdpipeout[1], 1);
+	close(fdpipeout[1]);
+
+	int ret = fork();
+	if (ret == 0) {
+		execvp("/proc/self/exe", NULL);
+		_exit(1);
+	} else if (ret < 0) {
+		perror("fork");
+		exit(1);
+	}
+
+	dup2(tmpin, 0);
+	dup2(tmpout, 1);
+	close(tmpin);
+	close(tmpout);
+
+	char ch;
+	char * buffer = (char *) malloc (100);
+	int i = 0;
+	
+	// Read from the pipe the output of the subshell
+	while (read(fdpipeout[0], &ch, 1)) {
+		if (ch == '\n') buffer[i++] = ' ';
+		else buffer[i++] = ch;
+	}
+	buffer[i] = '\0';
+printf("%s\n",buffer);
+			}else{
+
 			execvp(_simpleCommands[i]->_arguments[0],_simpleCommands[i]->_arguments);
 			perror("execvp");
 			_exit(1);
+			}
 		}
 	}
 
