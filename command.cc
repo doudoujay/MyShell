@@ -290,8 +290,8 @@ void Command::execute() {
 	
 	// Read from the pipe the output of the subshell
 	while (read(fdpipeout[0], &ch, 1)) {
-		if (ch == '\n') buffer[i++] = ' ';
-		else buffer[i++] = ch;
+		 if (ch != '\n')
+		    buffer[i++] = ch;
 	}
 	buffer[i] = '\0';
 printf("%s\n",buffer);
