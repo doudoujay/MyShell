@@ -35,6 +35,8 @@ struct SimpleCommand {
 
   SimpleCommand();
   void insertArgument( char * argument );
+  char * checkExpansion(char * argument);
+  char * tilde(char * argument);
 };
 
 #endif
