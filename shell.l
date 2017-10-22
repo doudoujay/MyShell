@@ -138,7 +138,7 @@ void myunputc(int c) {
 	close(tmpout);
 
 	char ch;
-	char * buffer = (char *) malloc (100);
+	char * buffer = (char *) malloc (4096);
 	int i = 0;
 	
 	// Read from the pipe the output of the subshell
