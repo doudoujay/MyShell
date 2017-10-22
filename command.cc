@@ -340,10 +340,10 @@ void Command::prompt() {
 	if(ERR == NULL){
 		onError = false;
 	}
-	if(isatty(0) && !onError && !PROMT){
+	if(isatty(0) && !onError && !PROMPT){
 		printf("%s",PROMPT);
 	}
-	if(isatty(0) && onError && !PROMT){
+	if(isatty(0) && onError && !PROMPT){
 		printf("%s",ERR);
 	}
 	fflush(stdout);
