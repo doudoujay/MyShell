@@ -329,14 +329,14 @@ void Command::execute() {
 
 
 void Command::prompt() {
+	char * PROMPT = getenv("PROMPT");
+	char * ERR = getenv("onError");
 	
 	if(isatty(0) && !PROMPT){
 		printf("myshell>");
 		fflush(stdout);
 	}
 
-	char * PROMPT = getenv("PROMPT");
-	char * ERR = getenv("onError");
 	if(ERR == NULL){
 		onError = false;
 	}
