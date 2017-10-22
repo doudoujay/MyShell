@@ -41,4 +41,10 @@ int main() {
 
 	Command::_currentCommand.prompt();
 	yyparse();
+
+	for(int i = 0; i < 1024; i++){
+		if(history[i] != NULL){
+			free(history[i]);
+		}
+	}
 }
