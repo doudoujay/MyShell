@@ -5,6 +5,8 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+extern char * history [];
+
 int yyparse(void);
 
 extern "C" void ctrlC (int sig) {
