@@ -300,7 +300,7 @@ void Command::execute() {
 				} 
 				else {
 					execvp(_simpleCommands[i]->_arguments[0],_simpleCommands[i]->_arguments);
-					perror("execvp");
+				//	perror("execvp");
 					_exit(1);
 				}
 			}
