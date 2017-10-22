@@ -329,12 +329,12 @@ void Command::execute() {
 
 
 void Command::prompt() {
-	/*
+	
 	if(isatty(0)){
 		printf("myshell>");
 		fflush(stdout);
 	}
-	*/
+
 	char * PROMPT = getenv("PROMPT");
 	char * ERR = getenv("onError");
 	if(ERR == NULL){
