@@ -121,6 +121,8 @@ if [[ $opt == "p3" || $opt == "ALL" ]]; then
     echo "--- Tilde Expansion -- ($grade11max pts)"
     ./test_tilde && grade11=`expr $grade11 "+" 4`
 
+	touch shell-out
+
     grade12=0
     grade12max=10
     echo "--- Robustness -- ($grade12max pts)"
