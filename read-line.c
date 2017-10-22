@@ -23,8 +23,7 @@ char line_buffer[MAX_BUFFER_LINE];
 // Yours have to be updated.
 int history_index = 0;
 char * history [1024];
-//int history_length = sizeof(history)/sizeof(char *);
-int history_length = 0;
+int history_length = 1024;
 
 void read_line_print_usage()
 {
@@ -130,6 +129,7 @@ char * read_line() {
       read(0, &ch2, 1);
       if (ch1==91 && ch2==65) {
 	// Up arrow. Print next line in history.
+	
 
 	// Erase old line
 	// Print backspaces
@@ -152,7 +152,7 @@ char * read_line() {
 	}	
 
 	// Copy line from history
-	strcpy(line_buffer, history[history_index]);
+	strcpy(line_buffer, history[--history_index]);
 	line_length = strlen(line_buffer);
 	history_index=(history_index+1)%history_length;
 
@@ -170,9 +170,11 @@ char * read_line() {
   line_buffer[line_length]=0;
 
   //update history
-  	history[history_index] = (char *)malloc(strlen(line_buffer)*sizeof(char)+1);
-	printf("%s", line_buffer);
+  	history[history_index] = (char *)malloc(strlen(line_buffer)*sizeof(char)+1); 
+	//printf("%s", line_buffer);
+	
 	strcpy(history[history_index++], line_buffer);
+	history[history_index-1][strlen(line_buffer)-1] = '\0';
 
   return line_buffer;
 }
