@@ -55,6 +55,14 @@ char * read_line() {
     if (ch>=32) {
       // It is a printable character. 
 
+		//backspace
+		if (ch == 127){
+			if(line_length > 0){
+				ch = 8;
+
+			}
+		}
+
       // Do echo
       write(1,&ch,1);
 
