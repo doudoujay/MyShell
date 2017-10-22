@@ -22,14 +22,7 @@ char line_buffer[MAX_BUFFER_LINE];
 // This history does not change. 
 // Yours have to be updated.
 int history_index = 0;
-char * history [] = {
-  "ls -al | grep x", 
-  "ps -e",
-  "cat read-line-example.c",
-  "vi hello.c",
-  "make",
-  "ls -al | grep xxx | grep yyy"
-};
+char * history [1024];
 int history_length = sizeof(history)/sizeof(char *);
 
 void read_line_print_usage()
