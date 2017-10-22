@@ -45,6 +45,7 @@ char * read_line() {
   tty_raw_mode();
 
   line_length = 0;
+  int line_loc = line_length;
 
   // Read one line until enter is typed
   while (1) {
@@ -74,7 +75,6 @@ char * read_line() {
 			}
 			continue;
 		}
-	}
 
       // Do echo
       write(1,&ch,1);
@@ -168,6 +168,11 @@ char * read_line() {
   line_buffer[line_length]=10;
   line_length++;
   line_buffer[line_length]=0;
+
+  //update history
+  	history[history_index] = (char *)malloc(strlen(line_buffer)*sizeof(char)+1);
+	printf("%s", line_buffer);
+	strcpy(history[history_index++], line_buffer);
 
   return line_buffer;
 }

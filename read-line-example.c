@@ -4,6 +4,9 @@
  *
  *
  */
+#include <stdlib.h>
+
+extern  char * history[];
 
 char * read_line();
 
@@ -25,5 +28,10 @@ int main(int argc, char ** argv)
 
     // Print line read
     printf("line read: %s\n", s);
+  }
+  for(int i = 0; i < 1024; i++){
+	  if(history[i] != NULL){
+		  free(history[i]);
+	  }
   }
 }
