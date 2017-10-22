@@ -23,7 +23,7 @@ char line_buffer[MAX_BUFFER_LINE];
 // Yours have to be updated.
 int history_index = 0;
 char * history [1024];
-int history_length = 1024;
+int history_length = 0;
 
 void read_line_print_usage()
 {
@@ -152,9 +152,9 @@ char * read_line() {
 	}	
 
 	// Copy line from history
-	strcpy(line_buffer, history[--history_index]);
+	strcpy(line_buffer, history[history_index--]);
 	line_length = strlen(line_buffer);
-	history_index=(history_index+1)%history_length;
+	history_index=(history_index)%history_length;
 
 	// echo line
 	write(1, line_buffer, line_length);
@@ -170,11 +170,12 @@ char * read_line() {
   line_buffer[line_length]=0;
 
   //update history
-  	history[history_index] = (char *)malloc(strlen(line_buffer)*sizeof(char)+1); 
+  	history[history_length] = (char *)malloc(strlen(line_buffer)*sizeof(char)+1); 
 	//printf("%s", line_buffer);
 	
-	strcpy(history[history_index++], line_buffer);
-	history[history_index-1][strlen(line_buffer)-1] = '\0';
+	strcpy(history[history_length++], line_buffer);
+	history[history_length-1][strlen(line_buffer)-1] = '\0';
+	history_index = history_length-1;
 
   return line_buffer;
 }
