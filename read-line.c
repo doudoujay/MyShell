@@ -22,7 +22,7 @@ char line_buffer[MAX_BUFFER_LINE];
 // This history does not change. 
 // Yours have to be updated.
 int history_index = 0;
-char * history [1024];
+char * history [128];
 int history_length = 0;
 
 void read_line_print_usage()
@@ -70,20 +70,23 @@ char * read_line() {
 				write(1,&ch,1);
 				// Remove one character from buffer
 				line_length--;
-				line_loc--;																						
+				line_loc--;
 			}
 			continue;
 		}
 
-      // Do echo
-      write(1,&ch,1);
+		// Do echo
+		write(1,&ch,1);
 
-      // If max number of character reached return.
-      if (line_length==MAX_BUFFER_LINE-2) break; 
+		// If max number of character reached return.
+		if (line_length==MAX_BUFFER_LINE-2) 
+			break; 
 
-      // add char to buffer.
-      line_buffer[line_length]=ch;
-      line_length++;
+		// add char to buffer.
+		line_buffer[line_length]=ch;
+		if(line_loc == line_length)
+			line_length++;
+		line_loc++;
     }
     else if (ch==10) {
       // <Enter> was typed. Return line
@@ -103,19 +106,20 @@ char * read_line() {
       // <backspace> was typed. Remove previous character read.
 
       // Go back one character
-      ch = 8;
-      write(1,&ch,1);
+      	ch = 8;
+      	write(1,&ch,1);
 
       // Write a space to erase the last character read
-      ch = ' ';
-      write(1,&ch,1);
+      	ch = ' ';
+      	write(1,&ch,1);
 
       // Go back one character
-      ch = 8;
-      write(1,&ch,1);
+      	ch = 8;
+      	write(1,&ch,1);
 
       // Remove one character from buffer
-      line_length--;
+      	line_length--;
+	line_loc--;
     }
     else if (ch==27) {
       // Escape sequence. Read two chars more
@@ -152,14 +156,100 @@ char * read_line() {
 	}	
 
 	// Copy line from history
-	strcpy(line_buffer, history[history_index--]);
-	line_length = strlen(line_buffer);
-	history_index=(history_index)%history_length;
+	if(history_length > 0 && history_index >= 0){
+		strcpy(line_buffer, history[history_index--]);
+		history_index=(history_index)%history_length;
+		if(history_index == -1){
+			history_index = history_length - 1;
+		}
 
+		line_length = strlen(line_buffer);
+	}
 	// echo line
 	write(1, line_buffer, line_length);
-      }
-      
+      }// end of up
+      else if (ch1==91 && ch2==66) {
+	// Down arrow. Print prev line in history.
+
+	// Erase old line
+	// Print backspaces
+	int i = 0;
+	for (i =0; i < line_length; i++) {
+	  ch = 8;
+	  write(1,&ch,1);
+	}
+
+	// Print spaces on top
+	for (i =0; i < line_length; i++) {
+	  ch = ' ';
+	  write(1,&ch,1);
+	}
+
+	// Print backspaces
+	for (i =0; i < line_length; i++) {
+	  ch = 8;
+	  write(1,&ch,1);
+	}	
+
+	// Copy line from history
+	if(history_length > 0 && history_index <= history_length-1)
+		strcpy(line_buffer, history[history_index++]);
+	else if(history_index == history_length){
+		history_index = history_length - 1;
+		strcpy(line_buffer,"");
+	}
+
+	line_length = strlen(line_buffer);
+	// echo line
+	write(1, line_buffer, line_length);
+	}//End down arrow	      
+	else if (ch1==91 && ch2==68) {
+	     	//Left Arrow
+		if(line_loc > 0){
+			ch = 27;
+			write(1,&ch,1);
+			ch = 91;
+			write(1,&ch,1);
+			ch = 68;
+			write(1,&ch,1);
+			line_loc--;		
+		}
+	  }//End Left
+	 else if (ch1==91 && ch2==67) {
+		 //Right Arrow
+		if(line_loc < line_length){
+			ch = 27;
+			write(1,&ch,1);
+			ch = 91;
+			write(1,&ch,1);
+			ch = 67;
+			write(1,&ch,1);
+			line_loc++;			
+			}
+		 }//End Right
+	  else if (ch1==79 && ch2==72){ //Home
+		while(line_loc > 0){
+			ch = 27;
+			write(1,&ch,1);
+			ch = 91;
+			write(1,&ch,1);
+			ch = 68;
+			write(1,&ch,1);
+			line_loc--;		
+		}
+	  } //End Home
+
+	else if (ch1==79 && ch2==70){ //End
+		while(line_loc != line_length){
+			ch = 27;
+			write(1,&ch,1);
+			ch = 91;
+			write(1,&ch,1);
+			ch = 67;
+			write(1,&ch,1);
+			line_loc++;			
+		}
+	  } //End End 
     }
 
   }
@@ -176,6 +266,8 @@ char * read_line() {
 	strcpy(history[history_length++], line_buffer);
 	history[history_length-1][strlen(line_buffer)-1] = '\0';
 	history_index = history_length-1;
+
+	tty_term_mode();
 
   return line_buffer;
 }
