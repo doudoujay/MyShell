@@ -341,10 +341,10 @@ void Command::prompt() {
 		onError = false;
 	}
 	if(isatty(0) && !onError){
-		fprintf(stdout,"%s",PROMPT);
+		printf("%s",PROMPT);
 	}
 	if(isatty(0) && onError){
-		fprintf(stdout,"%s",ERR);
+		printf("%s",ERR);
 	}
 	fflush(stdout);
 	onError = false;
