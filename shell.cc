@@ -7,6 +7,7 @@
 
 extern char * history [];
 
+void yyrestart(FILE * file);
 int yyparse(void);
 
 extern "C" void ctrlC (int sig) {
@@ -41,7 +42,17 @@ int main() {
 		exit(-1);
 	}
 
-	Command::_currentCommand.prompt();
+	FILE* fd = fopen(".shellrc", "r");
+		if (fd) {
+			yyrestart(fd);
+			yyparse();
+			yyrestart(stdin);
+			fclose(fd);
+		}
+		else{
+			Command::_currentCommand.prompt();
+		}
+	//Command::_currentCommand.prompt();
 	yyparse();
 
 	/*
