@@ -11,6 +11,7 @@
 #include "command.hh"
 
 extern char **environ; //Holds enviroment variables
+bool onError = false;
 
 using namespace std;
 
@@ -326,11 +327,27 @@ void Command::execute() {
 
 // Shell implementation
 
+
 void Command::prompt() {
+	/*
 	if(isatty(0)){
 		printf("myshell>");
 		fflush(stdout);
 	}
+	*/
+	char * PROMPT = getenv("PROMPT");
+	char * ERR = getenv("onError");
+	if(ERR == NULL){
+		onError = false;
+	}
+	if(isatty(0) && !onError){
+		fprintf(stdout,"%s",PROMPT);
+	}
+	if(isatty(0) && onError){
+		fprintf(stdout,"%s",ERR);
+	}
+	fflush(stdout);
+	onError = false;
 }
 
 Command Command::_currentCommand;
