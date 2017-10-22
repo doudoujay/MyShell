@@ -23,7 +23,8 @@ char line_buffer[MAX_BUFFER_LINE];
 // Yours have to be updated.
 int history_index = 0;
 char * history [1024];
-int history_length = sizeof(history)/sizeof(char *);
+//int history_length = sizeof(history)/sizeof(char *);
+int history_length = 0;
 
 void read_line_print_usage()
 {
@@ -59,9 +60,21 @@ char * read_line() {
 		if (ch == 127){
 			if(line_length > 0){
 				ch = 8;
+				write(1,&ch,1);
+				// Write a space to erase the last character read
+				ch = ' ';
+				write(1,&ch,1);
 
+				// Go back one character
+				ch = 8;
+				write(1,&ch,1);
+				// Remove one character from buffer
+				line_length--;
+				line_loc--;																						
 			}
+			continue;
 		}
+	}
 
       // Do echo
       write(1,&ch,1);
