@@ -1,0 +1,73 @@
+Sat Oct 21 23:05:44 EDT 2017
++b read-line.c:173
+Breakpoint 1 at 0x400be5: file read-line.c, line 173.
++run
+Starting program: /home/u89/wang2226/cs252/lab3-src/read-line-example 
+
+Breakpoint 1, read_line () at read-line.c:173
+173	  	history[history_index] = (char *)malloc(strlen(line_buffer)*sizeof(char)+1); 
++n
+176		strcpy(history[history_index++], line_buffer);
++n
+177		history[history_index-1][strlen(line_buffer)-1] = '\0';
++n
+179	  return line_buffer;
++n
+180	}
++n
+main (argc=1, argv=0x7fffffffe848) at read-line-example.c:30
+30	    printf("line read: %s\n", s);
++n
+31	  }
++n
+24	    write(1, prompt, strlen(prompt));
++n
+27	    s = read_line();
++n
+
+Breakpoint 1, read_line () at read-line.c:173
+173	  	history[history_index] = (char *)malloc(strlen(line_buffer)*sizeof(char)+1); 
++n
+176		strcpy(history[history_index++], line_buffer);
++n
+177		history[history_index-1][strlen(line_buffer)-1] = '\0';
++n
+179	  return line_buffer;
++n
+180	}
++r
+Starting program: /home/u89/wang2226/cs252/lab3-src/read-line-example 
+
+Breakpoint 1, read_line () at read-line.c:173
+173	  	history[history_index] = (char *)malloc(strlen(line_buffer)*sizeof(char)+1); 
++n
+176		strcpy(history[history_index++], line_buffer);
++n
+177		history[history_index-1][strlen(line_buffer)-1] = '\0';
++continue
+Continuing.
+
+Breakpoint 1, read_line () at read-line.c:173
+173	  	history[history_index] = (char *)malloc(strlen(line_buffer)*sizeof(char)+1); 
++n
+176		strcpy(history[history_index++], line_buffer);
++n
+177		history[history_index-1][strlen(line_buffer)-1] = '\0';
++p history[0]
+$1 = 0x605010 "ls"
++p history[1]
+$2 = 0x605440 "ls -al\n"
++p history-index
+First argument of `-' is a pointer and second argument is neither
+an integer nor a pointer of the same type.
++p history_index
+$3 = 2
++p strlen(line_buffer)
+$4 = 7
++n
+179	  return line_buffer;
++p strlen(line_buffer)
+$5 = 7
++p history[1]
+$6 = 0x605440 "ls -al"
++quit

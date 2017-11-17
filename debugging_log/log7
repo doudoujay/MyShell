@@ -1,0 +1,11 @@
+Sat Oct 21 22:40:59 EDT 2017
++b read-line.c:156
+Breakpoint 1 at 0x400b42: file read-line.c, line 156.
++run
+Starting program: /home/u89/wang2226/cs252/lab3-src/read-line-example 
+
+Breakpoint 1, read_line () at read-line.c:156
+156		strcpy(line_buffer, history[history_index--]);
++p history_index
+$1 = 1
++quit

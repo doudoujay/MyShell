@@ -17,7 +17,7 @@ ifdef EDIT_MODE_ON
 	EDIT_MODE_OBJECTS=tty-raw-mode.o read-line.o
 endif
 
-all: git-commit shell cat_grep ctrl-c regular
+all: shell cat_grep ctrl-c regular
 
 lex.yy.o: shell.l 
 	$(LEX) -o lex.yy.cc shell.l
@@ -59,14 +59,6 @@ keyboard-example: keyboard-example.c tty-raw-mode.o
 
 read-line-example: read-line-example.c tty-raw-mode.o read-line.o
 	$(cc) $(ccFLAGS) $(WARNFLAGS) -o read-line-example read-line-example.c tty-raw-mode.o read-line.o
-
-.PHONY: git-commit
-git-commit:
-	git checkout master >> .local.git.out || echo
-	git add *.cc *.h *.l *.y Makefile >> .local.git.out  || echo
-	git add test-shell/testall.out >> .local.git.out  || echo
-	git commit -a -m 'Commit' >> .local.git.out || echo
-	git push origin master
 
 .PHONY: clean
 clean:

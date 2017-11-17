@@ -1,0 +1,12 @@
+Sat Oct 21 22:12:23 EDT 2017
++run
+Starting program: /home/u89/wang2226/cs252/lab3-src/read-line-example 
+
+Program received signal SIGSEGV, Segmentation fault.
+__strcpy_sse2_unaligned () at ../sysdeps/x86_64/multiarch/strcpy-sse2-unaligned.S:636
+636	../sysdeps/x86_64/multiarch/strcpy-sse2-unaligned.S: No such file or directory.
++where
+#0  __strcpy_sse2_unaligned () at ../sysdeps/x86_64/multiarch/strcpy-sse2-unaligned.S:636
+#1  0x0000000000400c1a in read_line () at read-line.c:174
+#2  0x00000000004007da in main (argc=1, argv=0x7fffffffe848) at read-line-example.c:27
++quit

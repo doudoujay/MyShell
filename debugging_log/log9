@@ -1,0 +1,23 @@
+Sun Oct 22 09:57:27 EDT 2017
++run
+Starting program: /home/u89/wang2226/cs252/lab3-src/shell 
+
+Program received signal SIGSEGV, Segmentation fault.
+strlen () at ../sysdeps/x86_64/strlen.S:106
+106	../sysdeps/x86_64/strlen.S: No such file or directory.
++wher
+#0  strlen () at ../sysdeps/x86_64/strlen.S:106
+#1  0x00007ffff74e303f in __GI__IO_fputs (str=0x0, fp=0x7ffff783a620 <_IO_2_1_stdout_>) at iofputs.c:33
+#2  0x0000000000406776 in Command::prompt (this=0x60c360 <Command::_currentCommand>) at command.cc:344
+#3  0x00000000004066e5 in Command::execute (this=0x60c360 <Command::_currentCommand>) at command.cc:325
+#4  0x0000000000404744 in yyparse () at shell.y:66
+#5  0x0000000000405880 in main () at shell.cc:48
++make
++run
+`/home/u89/wang2226/cs252/lab3-src/shell' has changed; re-reading symbols.
+Starting program: /home/u89/wang2226/cs252/lab3-src/shell 
+
+Program received signal SIGINT, Interrupt.
+0x00007ffff756c230 in __read_nocancel () at ../sysdeps/unix/syscall-template.S:84
+84	../sysdeps/unix/syscall-template.S: No such file or directory.
++quit

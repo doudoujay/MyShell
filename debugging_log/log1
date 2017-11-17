@@ -1,0 +1,12 @@
+Sat Sep 23 20:20:23 EDT 2017
++run
+Starting program: /home/u89/wang2226/cs252/lab3-src/shell 
+
+Program received signal SIGINT, Interrupt.
+0x00000000004038e6 in yyparse () at y.tab.cc:1342
+1342	    yystate = yytable[yystate];
++bt
+#0  0x00000000004038e6 in yyparse () at y.tab.cc:1342
+#1  0x0000000000403d36 in main () at shell.cc:6
+Quit
++quit

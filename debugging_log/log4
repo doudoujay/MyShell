@@ -1,0 +1,21 @@
+Sat Oct 21 22:15:06 EDT 2017
++run
+Starting program: /home/u89/wang2226/cs252/lab3-src/read-line-example 
+
+Program received signal SIGSEGV, Segmentation fault.
+__strcpy_sse2_unaligned () at ../sysdeps/x86_64/multiarch/strcpy-sse2-unaligned.S:636
+636	../sysdeps/x86_64/multiarch/strcpy-sse2-unaligned.S: No such file or directory.
++where
+#0  __strcpy_sse2_unaligned () at ../sysdeps/x86_64/multiarch/strcpy-sse2-unaligned.S:636
+#1  0x0000000000400c2e in read_line () at read-line.c:175
+#2  0x00000000004007da in main (argc=1, argv=0x7fffffffe848) at read-line-example.c:27
++b read-line.c:174
+Breakpoint 1 at 0x400bfd: file read-line.c, line 174.
++run
+Starting program: /home/u89/wang2226/cs252/lab3-src/read-line-example 
+
+Breakpoint 1, read_line () at read-line.c:174
+174		printf("%s", line_buffer);
++p strlen(line_buffer)
+$1 = 7
++quit

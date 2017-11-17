@@ -1,0 +1,14 @@
+Sat Sep 23 11:11:14 EDT 2017
++run
+Starting program: /home/u89/wang2226/cs252/lab3-src/shell 
+
+Program received signal SIGINT, Interrupt.
+yyparse () at y.tab.cc:1343
+1343	    yystate = yydefgoto[yyn - YYNTOKENS];
++bt
+#0  yyparse () at y.tab.cc:1343
+#1  0x0000000000403d36 in main () at shell.cc:6
++where
+#0  yyparse () at y.tab.cc:1343
+#1  0x0000000000403d36 in main () at shell.cc:6
++q

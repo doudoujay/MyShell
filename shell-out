@@ -1,0 +1,16 @@
+   Yacc: insert command "cat"
+   Yacc: insert input "files/aaa"
+   Yacc: Execute command
+
+
+              COMMAND TABLE                
+
+  #   Simple Commands
+  --- ----------------------------------------------------------
+  0   "cat" 	
+
+  Output       Input        Error        Background
+  ------------ ------------ ------------ ------------
+  default      files/aaa    default      NO          
+
+

@@ -1,0 +1,45 @@
+Sat Oct 21 22:20:23 EDT 2017
++b read-line.c:174
+Breakpoint 1 at 0x400c09: file read-line.c, line 174.
++run
+Starting program: /home/u89/wang2226/cs252/lab3-src/read-line-example 
+
+Breakpoint 1, read_line () at read-line.c:174
+174		printf("%s", line_buffer);
++n
+175		strcpy(history[history_index], line_buffer);
++p history[0]
+$1 = 0x605010 ""
++p history[1]
+$2 = 0x0
++p line_buffer
+$3 = "ls -al\n", '\000' <repeats 2040 times>
++p hitory_index
+No symbol "hitory_index" in current context.
++p history_index
+$4 = 1
++make
++run
+Starting program: /home/u89/wang2226/cs252/lab3-src/read-line-example 
+
+Breakpoint 1, read_line () at read-line.c:174
+174	rintf("%s", line_buffer);
++n
+175	trcpy(history[history_index++], line_buffer);
++n
+
+Program received signal SIGSEGV, Segmentation fault.
+__strcpy_sse2_unaligned () at ../sysdeps/x86_64/multiarch/strcpy-sse2-unaligned.S:636
+636	../sysdeps/x86_64/multiarch/strcpy-sse2-unaligned.S: No such file or directory.
++run
+Starting program: /home/u89/wang2226/cs252/lab3-src/read-line-example 
+
+Breakpoint 1, read_line () at read-line.c:174
+174	rintf("%s", line_buffer);
++n
+175	trcpy(history[history_index++], line_buffer);
++p history[1]
+$5 = 0x0
++p history[0]
+$6 = 0x605010 ""
++quit
