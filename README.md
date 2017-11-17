@@ -32,7 +32,7 @@
 
 ## Features that DOES NOT work:
 * none
+* no extra features
 
-### NO EXTRA FEATURES
 ![screen shot](https://i.imgur.com/4DAW1t2.png)
 
