@@ -34,5 +34,5 @@
 * none
 
 ### NO EXTRA FEATURES
-![screen shot](./img.jpg)
+![screen shot](https://i.imgur.com/4DAW1t2.png)
 
